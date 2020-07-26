@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="contactUsCallback"
+            type="app.road2xtech.neighbourhood.presenter.ContactUsCallback" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activites.ContactUsActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back">
+
+            <TextView
+                android:id="@+id/tvHeaderView"
+                style="@style/boldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Us" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/linearMain"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/grey_200"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvContactUs"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Contact Us "
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="21sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvContactUsOn"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Email Address " />
+
+
+                <TextView
+                    android:id="@+id/tvContactUsOnData"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:padding="8dp"
+                    android:onClick="@{(v)->contactUsCallback.onEmailContact()}"
+                    android:text="support@padosii.com" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvContactUsOPhone"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Phone No. " />
+
+
+                <TextView
+                    android:id="@+id/tvContactUsOnPhoneData"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:padding="8dp"
+                    android:onClick="@{(v)->contactUsCallback.onPhoneContact()}"
+                    android:text="(+91) 8104956023" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/grey_200"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvFollowUs"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Follow Us "
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="21sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvInstagramFollow"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Instagram " />
+
+
+                <TextView
+                    android:id="@+id/tvInstagramFollowData"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:padding="8dp"
+                    android:onClick="@{(v)->contactUsCallback.onInstagram()}"
+                    android:text="padosi.app" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvFacebookLink"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Facebook " />
+
+
+                <TextView
+                    android:id="@+id/tvFacebookLinkData"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:padding="8dp"
+                    android:onClick="@{(v)->contactUsCallback.onFacebook()}"
+                    android:text="padosi0.1" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/grey_200"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvVisitUs"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Visit On "
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="21sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvWebSiteLink"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="8dp"
+                    android:text="Link" />
+
+
+                <TextView
+                    android:id="@+id/tvWebsiteLinkData"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:padding="8dp"
+                    android:onClick="@{(v)->contactUsCallback.onBrowser()}"
+                    android:text="https://www.padosii.com" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

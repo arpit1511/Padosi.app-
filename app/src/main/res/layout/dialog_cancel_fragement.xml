@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="cancelModel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.CancelOrderViewModel" />
+
+        <variable
+            name="callbackCancel"
+            type="app.road2xtech.neighbourhood.presenter.CancelOrderCallback" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground">
+
+
+        <ImageButton
+            android:id="@+id/buttonClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_close_pink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvUserMsg"
+            style="@style/regularRalwayTextViewHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="Arpit wants to cancel his order. \n Are You agree?"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonClose" />
+
+
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/smallRegularRalwayTextViewHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="1"
+            android:background="@color/lightCancelBackground"
+            android:drawableLeft="@drawable/ic_close_pink"
+            android:drawablePadding="8dp"
+            android:minHeight="40dp"
+            android:onClick="@{(v)->callbackCancel.onCancel()}"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:text="Cancel"
+            android:textColor="@color/colorButtonPink"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnAccept"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserMsg"
+            app:layout_constraintVertical_bias="0.666" />
+
+
+        <Button
+            android:id="@+id/btnAccept"
+            style="@style/regularRalwayTextViewHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:background="@color/lightAcceptBackground"
+            android:drawableLeft="@drawable/ic_check_green"
+            android:drawablePadding="8dp"
+            android:minHeight="40dp"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:onClick="@{(v)->callbackCancel.onAccept()}"
+            android:text="Accept"
+            android:textColor="@color/colorGreenFont"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnCancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnCancel" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

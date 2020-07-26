@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="registerviewmodel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.RegisterViewModel" />
+
+        <variable
+            name="registerCallback"
+            type="app.road2xtech.neighbourhood.presenter.RegisterCallback" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        tools:context=".view.activites.MainActivity">
+
+
+        <ImageView
+            android:id="@+id/imageViewRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:elevation="32dp"
+            android:translationZ="@dimen/cardview_default_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_login_background" />
+
+        <TextView
+            android:id="@+id/textViewRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:elevation="8dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Register"
+            android:textColor="@color/colorHeading"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.168"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewRegister" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegister">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_user_profile"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:hint="Person Name"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:padding="16dp"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:startIconTint="@color/colorHeading" />
+
+
+                <EditText
+                    android:id="@+id/editTextMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:hint="Mobile Number"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:padding="16dp"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:startIconTint="@color/colorHeading" />
+
+
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:hint="Email Address"
+                    android:inputType="textEmailAddress"
+                    android:padding="16dp"
+                    android:text=""
+                    android:textSize="16sp"
+                    app:startIconTint="@color/colorHeading" />
+
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/drawable_rounded_corner_pink"
+                    android:onClick="@{(v)->registerCallback.onSendOtp()}"
+                    android:text="Verify OTP"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewContainer" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

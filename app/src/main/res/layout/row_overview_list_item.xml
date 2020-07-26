@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <EditText
+            android:id="@+id/edtItemName"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_margin="4dp"
+            android:hint="Enter Item"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorHeading"
+            android:background="@drawable/drawable_grey_bacjground_radius"
+            android:layout_weight="2"/>
+
+        <EditText
+            android:id="@+id/edtItemQty"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="0.5"
+            android:hint="qty"
+            android:focusableInTouchMode="true"
+            android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorHeading"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:background="@drawable/drawable_grey_bacjground_radius"
+            android:layout_margin="4dp"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+            android:id="@+id/spVolume"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_margin="2dp"
+            android:spinnerMode="dropdown"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/drawable_spinner_dropdown_icon_grey"
+            android:entries="@array/volume"
+            android:fontFamily="@font/raleway_medium"
+            android:textColor="@color/colorHeading"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.5"/>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

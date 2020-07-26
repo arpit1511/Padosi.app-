@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import
+            alias="View"
+            type="android.view.View" />
+
+        <variable
+            name="dashBoardCallback"
+            type="app.road2xtech.neighbourhood.presenter.DashboardCallback" />
+
+        <variable
+            name="dashBoardModel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.DashboardViewModel" />
+
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        tools:context=".view.fragments.DashboardFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:background="@color/colorBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvHeaderView"
+                        style="@style/boldRalwayTextViewHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="21sp"
+                        android:text="Dashboard"/>
+
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+                <TextView
+                    android:id="@+id/textViewHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Dashboard"
+                    android:visibility="gone"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/TextViewUserName"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:onClick="@{(v)->dashBoardCallback.onProfileClick()}"
+                    android:text="Jack Sperrow"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:padding="12dp"
+                    android:onClick="@{(v)->dashBoardCallback.onNotificationList()}"
+                    android:visibility="visible"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_notification"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                <TextView
+                    android:id="@+id/imageButtonNotificationBadge"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="32dp"
+                    android:onClick="@{(v)->dashBoardCallback.onNotificationList()}"
+                    android:visibility="gone"
+                    android:text="0"
+                    android:padding="2dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="8sp"
+                    android:background="@drawable/drawable_badge_notication"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SmallSp" />
+
+
+
+
+                <ImageButton
+                    android:id="@+id/imageButtonMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{(v)->dashBoardCallback.onChatMessageList()}"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_message"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButtonNotification"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/imageButtonChatBadge"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="6dp"
+                    android:onClick="@{(v)->dashBoardCallback.onChatMessageList()}"
+                    android:visibility="gone"
+                    android:text="0"
+                    android:padding="2dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="8sp"
+                    android:background="@drawable/drawable_badge_notication"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButtonNotification"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SmallSp" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="16dp"
+                    app:cardUseCompatPadding="true"
+                    app:contentPadding="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextViewUserName">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_gradient_going_out"
+                                android:onClick="@{(v)->dashBoardCallback.onGoingOut()}"
+                                android:orientation="vertical"
+                                android:padding="30dp">
+
+                                <ImageView
+                                    android:id="@+id/ivOption1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="8dp"
+                                    android:onClick="@{(v)->dashBoardCallback.onGoingOut()}"
+                                    android:src="@drawable/ic_going_out" />
+
+                                <TextView
+                                    android:id="@+id/tvOption1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/raleway_regular"
+                                    android:onClick="@{(v)->dashBoardCallback.onGoingOut()}"
+                                    android:text="Going Out"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:onClick="@{(v)->dashBoardCallback.onLookOut()}"
+                                android:background="@drawable/drawable_gradient_look_out"
+                                android:orientation="vertical"
+                                android:padding="30dp">
+
+                                <ImageView
+                                    android:id="@+id/ivOption2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="8dp"
+                                    android:onClick="@{(v)->dashBoardCallback.onLookOut()}"
+                                    android:src="@drawable/ic_look_out" />
+
+                                <TextView
+                                    android:id="@+id/tvOption2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/raleway_regular"
+                                    android:text="Look Out"
+                                    android:onClick="@{(v)->dashBoardCallback.onLookOut()}"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_gradient_shopping_list"
+                                android:onClick="@{(v)->dashBoardCallback.onShoppingList()}"
+                                android:orientation="vertical"
+                                android:padding="30dp">
+
+                                <ImageView
+                                    android:id="@+id/image3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="8dp"
+                                    android:onClick="@{(v)->dashBoardCallback.onShoppingList()}"
+                                    android:src="@drawable/ic_shooping_list" />
+
+                                <TextView
+                                    android:id="@+id/text3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/raleway_regular"
+                                    android:onClick="@{(v)->dashBoardCallback.onShoppingList()}"
+                                    android:text="Shopping List"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_gradient_myrequest"
+                                android:onClick="@{(v)->dashBoardCallback.onMyRequestList()}"
+                                android:orientation="vertical"
+                                android:padding="30dp">
+
+                                <ImageView
+                                    android:id="@+id/ivOption4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="8dp"
+                                    android:onClick="@{(v)->dashBoardCallback.onMyRequestList()}"
+                                    android:src="@drawable/ic_request" />
+
+                                <TextView
+                                    android:id="@+id/tvOption4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/raleway_regular"
+                                    android:onClick="@{(v)->dashBoardCallback.onMyRequestList()}"
+                                    android:text="All Tasks"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="12sp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+
+
+                        <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/imageSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="230dp"
+                            app:sliderAnimationDuration="600"
+                            app:sliderAutoCycleDirection="back_and_forth"
+                            app:sliderAutoCycleEnabled="true"
+                            app:sliderIndicatorAnimationDuration="600"
+                            app:sliderIndicatorGravity="center_horizontal|bottom"
+                            app:sliderIndicatorMargin="15dp"
+                            app:sliderIndicatorOrientation="horizontal"
+                            app:sliderIndicatorPadding="3dp"
+                            app:sliderIndicatorRadius="2dp"
+                            app:sliderIndicatorSelectedColor="#5A5A5A"
+                            app:sliderIndicatorUnselectedColor="#FFF"
+                            app:sliderScrollTimeInSec="1"
+                            app:sliderStartAutoCycle="true" />
+
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/image4"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:padding="8dp"-->
+<!--                            android:scaleType="centerInside"-->
+<!--                            android:src="@drawable/img_banner" />-->
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+</layout>

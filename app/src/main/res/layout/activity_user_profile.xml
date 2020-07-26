@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="userCallback"
+            type="app.road2xtech.neighbourhood.presenter.UserCallback" />
+
+
+        <variable
+            name="userViewModel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.UserViewModel" />
+
+
+        <variable
+            name="userName"
+            type="java.lang.String" />
+
+        <variable
+            name="userEmail"
+            type="java.lang.String" />
+
+        <variable
+            name="userAddress"
+            type="java.lang.String" />
+
+
+        <variable
+            name="userCity"
+            type="java.lang.String" />
+
+        <variable
+            name="userState"
+            type="java.lang.String" />
+
+        <variable
+            name="userCountry"
+            type="java.lang.String" />
+
+
+        <variable
+            name="userMobile"
+            type="java.lang.String" />
+
+        <variable
+            name="userPincode"
+            type="java.lang.String" />
+
+
+        <variable
+            name="userDateOfBirth"
+            type="java.lang.String" />
+
+        <variable
+            name="userRadius"
+            type="java.lang.String" />
+
+        <variable
+            name="userTip"
+            type="java.lang.String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorBackground"
+            app:navigationIcon="@drawable/ic_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvHeaderView"
+                style="@style/boldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="21dp" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.activites.UpdateProfileActivity">
+
+
+                <ImageView
+                    android:id="@+id/imageViewProfile"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:elevation="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageButton
+                    android:id="@+id/imgBtnEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginEnd="78dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_edit"
+                    android:tint="@color/colorButtonPink"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonEditProfile"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewEmail"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="@{userName}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="21dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewProfile" />
+
+
+                <TextView
+                    android:id="@+id/textViewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@{userEmail}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+                <Button
+                    android:id="@+id/buttonEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/drawable_edit_profle_button"
+                    android:fontFamily="@font/raleway_bold"
+                    android:maxHeight="32dp"
+                    android:minHeight="32dp"
+                    android:onClick="@{(v)->userCallback.onUpdate()}"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="Save Profile"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.447"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+
+
+                <TextView
+                    android:id="@+id/textAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_regular"
+                    android:text="Address"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+
+
+                <EditText
+                    android:id="@+id/editTextAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userAddress}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textAddress" />
+
+
+                <TextView
+                    android:id="@+id/textCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Country"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+
+
+                <EditText
+                    android:id="@+id/editTextCountry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userCountry}"
+                    android:onClick="@{(v)->userCallback.onCountryData()}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextState"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textCountry" />
+
+                <TextView
+                    android:id="@+id/textState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="State"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textCountry"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/editTextState"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userState}"
+                    android:onClick="@{(v)->userCallback.onStateData()}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toEndOf="@+id/editTextCountry"
+                    app:layout_constraintTop_toBottomOf="@+id/textState" />
+
+
+                <TextView
+                    android:id="@+id/textCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="City"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextCountry" />
+
+
+                <EditText
+                    android:id="@+id/editTextCity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userCity}"
+                    android:onClick="@{(v)->userCallback.onCityData()}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextPincode"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textCity" />
+
+
+                <TextView
+                    android:id="@+id/textPincode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Pincode"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textCity"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/editTextPincode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userPincode}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toEndOf="@+id/editTextCity"
+                    app:layout_constraintTop_toBottomOf="@+id/textPincode" />
+
+
+                <TextView
+                    android:id="@+id/textDob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Date of Birth"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
+
+
+                <EditText
+                    android:id="@+id/editTextDob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:onClick="@{(v)->userCallback.onDateOfBirth()}"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userDateOfBirth}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextPhone"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textDob" />
+
+
+                <TextView
+                    android:id="@+id/textPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Phone Number"
+                    android:textColor="@color/colorFontLight"
+                    android:textSize="16sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textDob"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:enabled="false"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="@={userMobile}"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toEndOf="@+id/editTextDob"
+                    app:layout_constraintTop_toBottomOf="@+id/textPhone" />
+
+
+                <TextView
+                    android:id="@+id/tvlMessage"
+                    style="@style/smallBoldRalwayTextViewHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="This is the fee you will be charging when you will act as a volunteer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextDob" />
+
+
+                <TextView
+                    android:id="@+id/tvlTip"
+                    style="@style/boldRalwayTextViewLight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="Set % Tip"
+                    app:layout_constraintEnd_toStartOf="@+id/edtTipValue"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlMessage" />
+
+
+                <EditText
+                    android:id="@+id/edtTipValue"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_edit_text_white_background"
+                    android:minHeight="32dp"
+                    android:paddingStart="4dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:text="@={userTip}"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toEndOf="@+id/tvlTip"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlMessage" />
+
+
+                <TextView
+                    android:id="@+id/paymentMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Payment Mode"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtTipValue" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/paymentMode">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxCash"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Cash"
+                        android:textColor="@color/colorHeading" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxCheque"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Cheque"
+                        android:textColor="@color/colorHeading" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxUpiPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="UPI Payment"
+                        android:textColor="@color/colorHeading" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxPaytm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Paytm"
+                        android:textColor="@color/colorHeading" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+                    <CheckBox
+                        android:id="@+id/checkBoxGpay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="GPay"
+                        android:textColor="@color/colorHeading" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxAmazonPay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Amazon Pay"
+                        android:textColor="@color/colorHeading" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
+
+                    <CheckBox
+                        android:id="@+id/checkboxOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Other"
+                        android:textColor="@color/colorHeading" />
+
+                </LinearLayout>
+
+                <!--                </LinearLayout>-->
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="Radius : "
+                        android:textColor="@color/colorHeading"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/textViewSeekBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="@={userRadius}"
+                        android:textColor="@color/colorFontLight"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout14">
+
+                    <SeekBar
+                        android:id="@+id/seekBarRadius"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:minHeight="32dp"
+                        android:minWidth="32dp"
+                        android:max="1000"
+                        android:min="1"
+                        android:progress="50" />
+
+                </LinearLayout>
+
+
+                <!--            </LinearLayout>-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+

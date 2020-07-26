@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="app.road2xtech.neighbourhood">
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name=".app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.activites.ContactUsActivity"></activity>
+        <activity android:name=".view.activites.AboutUsActivity" />
+        <activity android:name=".view.activites.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activites.NotificationListActivity" />
+        <activity android:name=".view.activites.VolunteerDetail" />
+        <activity android:name=".view.activites.MyRequestActivity" />
+        <activity android:name=".view.activites.UserChatActivity" />
+        <activity android:name=".view.activites.LookoutActivity" />
+        <activity android:name=".view.activites.ChatListActivity" />
+        <activity android:name=".chat.Chat_Activity" />
+        <activity android:name=".view.activites.UserOrderDetailActivity" />
+        <activity android:name=".view.activites.SendRequestActivity" />
+        <activity android:name=".view.activites.OrderHistroryActivate" />
+        <activity android:name=".view.activites.MyOrderActivity" />
+        <activity android:name=".view.activites.GoingOutActivity" />
+        <activity android:name=".view.activites.HomeActivity" />
+        <activity android:name=".view.activites.OrderOverviewActivity" />
+        <activity android:name=".view.activites.OrderDetailActivity" />
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            tools:node="remove" />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" /> <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming notification message. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" /> <!-- [END] -->
+        <activity android:name=".view.activites.UpdateProfileActivity" />
+        <activity
+            android:name=".view.activites.ShoppingListActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".view.activites.DashboardActivity" />
+        <activity android:name=".view.activites.AdvanceRegisterActivity" />
+        <activity android:name=".view.activites.OneTimePasswordActivity" />
+        <activity android:name=".view.activites.RegisterActivity" />
+        <activity android:name=".view.activites.MainActivity" />
+
+        <receiver android:name=".broadcastreceiver.IncomingSms">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".firebase.FCMMessageReceiverService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".util.GPSTracker"
+            android:foregroundServiceType="location" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider"/>
+        </provider>
+
+
+    </application>
+
+</manifest>

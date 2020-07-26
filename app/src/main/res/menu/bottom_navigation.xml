@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/page_home"/>
+
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@drawable/ic_order"
+        android:title="@string/page_order"/>
+
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:visible="false"
+        android:icon="@drawable/ic_checklist"
+        android:title="@string/page_checklist"/>
+
+
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/page_user"/>
+
+
+    <item
+        android:id="@+id/page_5"
+        android:enabled="true"
+        android:icon="@drawable/ic_bar"
+        android:title="@string/page_more"/>
+
+</menu>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/item_AboutUs"
+        android:title="About Us"
+        android:visible="true" />
+    <item
+        android:id="@+id/item_ContactUs"
+        android:title="Contact Us"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/item_Share"
+        android:title="Share"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/item_Rate"
+        android:title="Rate This App"
+        android:visible="true" />
+
+
+    <item
+        android:id="@+id/item_SignOut"
+        android:title="Sign Out"
+        android:visible="true" />
+
+</menu>

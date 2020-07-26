@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="callbackVolunteer"
+            type="app.road2xtech.neighbourhood.presenter.UserDetailCallback" />
+
+        <variable
+            name="cancelOrderModel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.CancelOrderViewModel" />
+
+
+        <variable
+            name="orderDate"
+            type="java.lang.String" />
+
+        <variable
+            name="orderNo"
+            type="java.lang.String" />
+
+
+        <variable
+            name="orderApproxPrice"
+            type="java.lang.String" />
+
+        <variable
+            name="orderAcceptedDate"
+            type="java.lang.String" />
+
+        <variable
+            name="orderUserName"
+            type="java.lang.String" />
+
+        <variable
+            name="orderAddress"
+            type="java.lang.String" />
+
+
+        <variable
+            name="orderPaymentOption"
+            type="java.lang.String" />
+
+        <variable
+            name="orderFinalAmount"
+            type="java.lang.String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activites.UserOrderDetailActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back">
+
+            <TextView
+                android:id="@+id/tvHeaderView"
+                style="@style/boldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Order Detail" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHeader">
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutMsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_300"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textViewLableMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:gravity="center_vertical"
+                        android:text="check quality and expiry date of the products before buying "
+                        android:textColor="@color/colorButtonPink"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/backButton"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tvlViewDetail"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="View Order Detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutMsg" />
+
+
+                <TextView
+                    android:id="@+id/textViewLableAcceptedBy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:gravity="end"
+                    android:text="Accepted By"
+                    android:onClick="@{(v)->callbackVolunteer.onAcceptedBy()}"
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvlViewDetail"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlViewDetail">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Order Date : "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvOrderDate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderDate}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Order No : "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvOrderNo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderNo}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Approximate Price: "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvApproxPrice"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderApproxPrice}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Order Accepted Date"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Accepted Date : "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvAcceptedDate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderAcceptedDate}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="User Detail"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="@{orderUserName}"
+                        android:textColor="@color/grey_600"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvUserAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="@{orderAddress}"
+                        android:textColor="@color/colorFontLight"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Items in this order"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvItemList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Payment Information"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Payment Option: "
+                        android:textColor="@color/colorFontLight"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvAcceptedPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@{orderPaymentOption}"
+                        android:textColor="@color/colorHeading"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+
+                    <ImageView
+                        android:id="@+id/imgBill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:adjustViewBounds="true"
+                        android:visibility="gone" />
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="FINAL ORDER AMOUNT "
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                        <EditText
+                            android:id="@+id/edtAmount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:background="@drawable/drawable_edit_text_white_background"
+                            android:enabled="false"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:inputType="number"
+                            android:maxHeight="36dp"
+                            android:minHeight="36dp"
+                            android:padding="4dp"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutImage">
+
+
+                    <TextView
+                        android:id="@+id/acceptedUsername"
+                        style="@style/smallBoldRalwayTextViewHeading"
+                        android:layout_width="wrap_content"
+                        android:text="jack sperrow"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content" />
+
+                    <RatingBar
+                        android:id="@+id/userRated"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="16dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <Button
+                            android:id="@+id/btnMessage"
+                            style="@style/smallRegularRalwayTextViewHeading"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/drawable_rounded_corner_green"
+                            android:onClick="@{(v)-> callbackVolunteer.onSendMessage()}"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="MESSAGE"
+                            android:textColor="@android:color/white" />
+
+
+                        <Button
+                            android:id="@+id/btnCancel"
+                            style="@style/smallRegularRalwayTextViewHeading"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/drawable_rounded_corner_pink"
+                            android:onClick="@{(v)-> callbackVolunteer.onCancelOrder()}"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:text="CANCEL ORDER"
+                            android:textColor="@android:color/white" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

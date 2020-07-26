@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import
+            alias="View"
+            type="android.view.View" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvOrderType"
+                style="@style/boldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/drawble_order_ribbon"
+                android:gravity="center"
+                android:text="Accepted"
+                android:textColor="@color/colorButtonPink"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tvUsername"
+                style="@style/boldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:text="Jack Sperrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOrderType" />
+
+            <Button
+                android:id="@+id/btnChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/drawable_chat_button"
+                android:drawableLeft="@drawable/ic_message"
+                android:drawablePadding="8dp"
+                android:drawableTint="@android:color/white"
+                android:fontFamily="@font/raleway_medium"
+                android:maxHeight="32dp"
+                android:minHeight="32dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Chat"
+                android:textColor="@android:color/white"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvUsername"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLblOrderDate"
+                style="@style/smallBoldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Order Date: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/smallRegularRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="2020-05-17 06:03 AM"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvLblOrderDate"
+                app:layout_constraintStart_toEndOf="@+id/tvLblOrderDate" />
+
+            <TextView
+                android:id="@+id/tvLblOrderStatus"
+                style="@style/smallBoldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:text="Order Status:"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblOrderDate" />
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/smallRegularRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Pending"
+                android:visibility="gone"
+                android:textColor="@color/colorButtonPink"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tvLblOrderStatus"
+                app:layout_constraintStart_toEndOf="@+id/tvLblOrderStatus" />
+
+
+            <TextView
+                android:id="@+id/tvLblOrderId"
+                style="@style/smallBoldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Order No:"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblOrderDate" />
+
+            <TextView
+                android:id="@+id/tvOrderId"
+                style="@style/smallRegularRalwayTextViewHeading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="10000"
+                app:layout_constraintStart_toEndOf="@+id/tvLblOrderId"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblOrderDate" />
+
+
+            <TextView
+                android:id="@+id/tvLblItem"
+                style="@style/smallBoldRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvOrderId" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMuOrderList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="250dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblItem" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@color/colorLightPink"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvMuOrderList">
+
+                <TextView
+                    android:id="@+id/tvOrderBill"
+                    style="@style/regularRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Order Bill 1500 (4 Items)"
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="12sp"
+                     />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tvWhoAccepted"
+                style="@style/regularRalwayTextViewHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="Order Bill 1500 (4 Items)"
+                android:textColor="@color/colorButtonPink"
+                android:textSize="13sp"
+                android:visibility="gone"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+            <Button
+                android:id="@+id/btnViewDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/drawable_pink_button"
+                android:fontFamily="@font/raleway_regular"
+                android:minHeight="40dp"
+                android:text="View Details"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWhoAccepted" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+

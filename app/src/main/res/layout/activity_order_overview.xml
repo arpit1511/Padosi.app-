@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="callbackOrderOverView"
+            type="app.road2xtech.neighbourhood.presenter.OrderOverviewCallback" />
+
+
+        <variable
+            name="orderOverviewModel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.OrderOverviewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        tools:context=".view.activites.OrderOverviewActivity">
+
+
+        <ImageButton
+            android:id="@+id/imageBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:onClick="@{(v)->callbackOrderOverView.onBackPressData()}"
+            android:padding="4dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHeaderView"
+            style="@style/boldRalwayTextViewHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:padding="4dp"
+            android:text="Order Overview"
+            app:layout_constraintStart_toEndOf="@+id/imageBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHeaderView">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="-172dp"
+                tools:layout_editor_absoluteY="-46dp">
+
+
+                <TextView
+                    android:id="@+id/tvLAddress"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery Address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAdresses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLAddress" />
+
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/drawable_white_bacjground_radius"
+                    android:fontFamily="@font/raleway_bold"
+                    android:minHeight="40dp"
+                    android:onClick="@{(v)->callbackOrderOverView.onAddNewAddress()}"
+                    android:text="Add New Address"
+                    android:textColor="@color/colorHeading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvAdresses" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvShoppingItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/drawable_rounded_corner_pink"
+                    android:onClick="@{(v)->callbackOrderOverView.onEditData()}"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvShoppingItems">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v)->callbackOrderOverView.onEditData()}">
+
+                        <TextView
+                            android:id="@+id/tvUpdateData"
+                            style="@style/boldRalwayTextViewHeading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:onClick="@{(v)->callbackOrderOverView.onEditData()}"
+                            android:padding="12dp"
+                            android:text="EDIT"
+                            android:textColor="@android:color/white" />
+
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="16dp"
+                            android:background="@android:color/transparent"
+                            android:onClick="@{(v)->callbackOrderOverView.onEditData()}"
+                            android:src="@drawable/ic_arrow_up" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textView8"
+                    style="@style/regularRalwayTextViewLight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="APPROXIMATE PRICE DETAILS"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearAdd" />
+
+
+                <View
+                    android:id="@+id/divider_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/grey_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/tvLAmount"
+                    style="@style/regularRalwayTextViewLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Price (Items)"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_1" />
+
+
+                <TextView
+                    android:id="@+id/tvAmount"
+                    style="@style/regularRalwayTextViewLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u20B9 21"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvLAmount"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tvlTip"
+                    style="@style/regularRalwayTextViewLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="10% Tip"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLAmount" />
+
+                <TextView
+                    android:id="@+id/tvTips"
+                    style="@style/regularRalwayTextViewLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u20B9 10"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvlTip"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/divider_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/grey_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlTip" />
+
+
+                <TextView
+                    android:id="@+id/tvlPayable"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Amount Payable"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_2" />
+
+
+                <TextView
+                    android:id="@+id/tvTotalAmount"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u20B9 31"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvlPayable"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <View
+                    android:id="@+id/divider_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/grey_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlPayable" />
+
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="TIME LIMIT"
+                    android:textColor="@color/colorButtonPink"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_3" />
+
+                <TextView
+                    android:id="@+id/tvlDate"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Date"
+                    android:textColor="@color/colorHeading"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:entries="@array/dateOfMonth"
+                    android:textAlignment="center"
+                    android:background="@drawable/drawable_spinner_dropdown_icon"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvlDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.12"
+                    app:layout_constraintStart_toEndOf="@+id/tvlDate" />
+
+                <TextView
+                    android:id="@+id/tvlTime"
+                    style="@style/boldRalwayTextViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="Time"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlDate" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    android:dropDownWidth="100dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/drawable_spinner_dropdown_icon"
+                    android:entries="@array/hourOfDay"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tvlTime"
+                    app:layout_constraintStart_toEndOf="@+id/tvlTime" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerMinute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    android:dropDownWidth="100dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/drawable_spinner_dropdown_icon"
+                    android:entries="@array/minuteOfHour"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/spinnerHour"
+                    app:layout_constraintStart_toEndOf="@+id/spinnerHour" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="16dp"
+                    android:dropDownWidth="100dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/drawable_spinner_dropdown_icon"
+                    android:entries="@array/timeType"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/spinnerMinute"
+                    app:layout_constraintStart_toEndOf="@+id/spinnerMinute" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvlTime">
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLookOut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_white_bacjground_radius"
+                        android:onClick="@{(v)->callbackOrderOverView.onLookOut()}"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rvShopping">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{(v)->callbackOrderOverView.onLookOut()}">
+
+                            <TextView
+                                style="@style/regularRalwayTextViewHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:onClick="@{(v)->callbackOrderOverView.onLookOut()}"
+                                android:padding="16dp"
+                                android:text="LOOK OUT" />
+
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="12dp"
+                                android:background="@android:color/transparent"
+                                android:onClick="@{(v)->callbackOrderOverView.onLookOut()}"
+                                android:src="@drawable/ic_arrow_right_grey" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearGoingOut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_rounded_corner_pink"
+                        android:onClick="@{(v)->callbackOrderOverView.onGoingOut()}"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rvShopping">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{(v)->callbackOrderOverView.onGoingOut()}">
+
+                            <TextView
+                                style="@style/regularRalwayTextViewHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:onClick="@{(v)->callbackOrderOverView.onGoingOut()}"
+                                android:padding="16dp"
+                                android:text="GOING OUT"
+                                android:textColor="@android:color/white" />
+
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="12dp"
+                                android:background="@android:color/transparent"
+                                android:onClick="@{(v)->callbackOrderOverView.onGoingOut()}"
+                                android:src="@drawable/ic_arrow_right" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

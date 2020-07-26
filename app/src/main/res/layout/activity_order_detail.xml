@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="orderDtailcallback"
+            type="app.road2xtech.neighbourhood.presenter.OrderDetailViewCallback" />
+
+
+        <variable
+            name="orderDetailViewModel"
+            type="app.road2xtech.neighbourhood.view.viewmodel.OrderDetailViewModel" />
+
+        <variable
+            name="orderDate"
+            type="java.lang.String" />
+
+        <variable
+            name="orderNo"
+            type="java.lang.String" />
+
+
+        <variable
+            name="orderApproxPrice"
+            type="java.lang.String" />
+
+        <variable
+            name="orderAcceptedDate"
+            type="java.lang.String" />
+
+        <variable
+            name="orderUserName"
+            type="java.lang.String" />
+
+        <variable
+            name="orderAddress"
+            type="java.lang.String" />
+
+
+        <variable
+            name="orderPaymentOption"
+            type="java.lang.String" />
+
+        <variable
+            name="orderFinalAmount"
+            type="java.lang.String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activites.OrderDetailActivity">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:onClick="@{(v)->orderDtailcallback.onBackPressEvent()}"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textViewHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Order Detail"
+            android:textColor="@color/colorHeading"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/grey_300"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHeader">
+
+            <TextView
+                android:id="@+id/textViewLableMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center_vertical"
+                android:text="check quality and expiry date of the products before buying "
+                android:textColor="@color/colorButtonPink"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/backButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewLableViewDetail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="View Order Detail"
+                        android:textColor="@color/colorHeading"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/backButton"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/textViewLableAcceptedBy"-->
+                    <!--                        android:layout_width="0dp"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="8dp"-->
+                    <!--                        android:layout_marginTop="16dp"-->
+                    <!--                        android:layout_weight="1"-->
+                    <!--                        android:fontFamily="@font/raleway_bold"-->
+                    <!--                        android:gravity="right|end"-->
+                    <!--                        android:onClick="@{(v)->orderDtailcallback.onAccptedBy()}"-->
+                    <!--                        android:text="Accepted By"-->
+                    <!--                        android:textColor="@color/colorButtonPink"-->
+                    <!--                        android:textSize="18sp"-->
+                    <!--                        android:textStyle="bold"-->
+                    <!--                        app:layout_constraintStart_toEndOf="@+id/backButton"-->
+                    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Order Date : "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvOrderDate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderDate}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Order No : "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvOrderNo"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderNo}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Approximate Price: "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+                        <!--                                android:text="\u20B9 1500 (4 Items)"-->
+
+                        <TextView
+                            android:id="@+id/tvApproxPrice"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderApproxPrice}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Order Accepted Date"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/backButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Accepted Date : "
+                            android:textColor="@color/colorFontLight"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/tvAcceptedDate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="@{orderAcceptedDate}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="User Detail"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_bold"
+                        android:text="@{orderUserName}"
+                        android:textColor="@color/grey_600"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tvUserAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="@{orderAddress}"
+                        android:textColor="@color/colorFontLight"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Items in this order"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvItemList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_bold"
+                    android:text="Payment Information"
+                    android:textColor="@color/colorHeading"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/drawable_linear_border"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Payment Option: "
+                        android:textColor="@color/colorFontLight"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvAcceptedPayment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@{orderPaymentOption}"
+                        android:textColor="@color/colorHeading"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearFinalAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:visibility="visible">
+
+                    <RadioButton
+                        android:id="@+id/radioAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="FINAL AMOUNT"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="13sp" />
+
+
+                        <EditText
+                            android:id="@+id/edtAmountEnter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/drawable_edit_text_white_background"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:inputType="number"
+                            android:maxHeight="36dp"
+                            android:minHeight="36dp"
+                            android:padding="4dp"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvRate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="+ 5% ="
+                            android:textColor="@color/colorHeading"
+                            android:textSize="13sp" />
+
+
+                        <EditText
+                            android:id="@+id/edtAmount"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/drawable_edit_text_white_background"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:inputType="number"
+                            android:maxHeight="36dp"
+                            android:minHeight="36dp"
+                            android:padding="4dp"
+                            android:text="@={orderFinalAmount}"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/drawable_edit_text_white_background"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+
+                    <RadioButton
+                        android:id="@+id/radioImageUpload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:id="@+id/tvBillPath"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="6"
+                            android:drawableStart="@drawable/ic_bill"
+                            android:drawablePadding="8dp"
+                            android:fontFamily="@font/raleway_medium"
+                            android:text="Upload Bill Copy"
+                            android:textColor="@color/colorHeading"
+                            android:textSize="14sp" />
+
+
+                        <ImageButton
+                            android:id="@+id/imgBtnAdd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:onClick="@{(v)->orderDtailcallback.onAdd()}"
+                            android:src="@drawable/ic_add_circle" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+
+                    <ImageView
+                        android:id="@+id/imgBill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:adjustViewBounds="true" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:visibility="visible">
+
+
+                    <Button
+                        android:id="@+id/btnUpload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/drawable_rounded_corner_pink"
+                        android:fontFamily="@font/raleway_bold"
+                        android:minHeight="32dp"
+                        android:onClick="@{(v)->orderDtailcallback.onUpload()}"
+                        android:paddingStart="32dp"
+                        android:paddingEnd="32dp"
+                        android:text="SUBMIT"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Order Status "
+                        android:textColor="@color/colorHeading"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+
+                    <EditText
+                        android:id="@+id/edtStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:background="@drawable/drawable_edit_text_white_background"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="Completed"
+                        android:maxHeight="36dp"
+                        android:minHeight="36dp"
+                        android:padding="4dp"
+                        android:textColor="@color/colorHeading"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnMessage"
+                        style="@style/smallRegularRalwayTextViewHeading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_rounded_corner_green"
+                        android:minHeight="40dp"
+                        android:onClick="@{(v)-> orderDtailcallback.onChatMessage()}"
+                        android:paddingStart="32dp"
+                        android:paddingEnd="32dp"
+                        android:text="MESSAGE"
+                        android:textColor="@android:color/white" />
+
+
+                    <Button
+                        android:id="@+id/btnFinish"
+                        style="@style/smallRegularRalwayTextViewHeading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_rounded_corner_pink"
+                        android:minHeight="40dp"
+                        android:onClick="@{(v)-> orderDtailcallback.onFinish()}"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="CANCEL ORDER"
+                        android:textColor="@android:color/white" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

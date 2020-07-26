@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_view_chat_message"
+            android:layout_marginStart="16dp"
+            android:layout_toStartOf="@+id/tv_chat_alphabet_mine"
+            android:background="@drawable/chat_rounded_text_bg"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/grey_200"
+            tools:text ="notice me "/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_chat_alphabet_mine"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:maxEms="1"
+            android:textAllCaps="true"
+            android:background="@drawable/circle_accent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/grey_200"
+            android:textStyle="bold"
+            tools:text ="a"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
